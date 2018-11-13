@@ -8,7 +8,14 @@ function component() {
   btn.onclick = printMe();
 
   divBox.appendChild(btn);
-  divBox.innerHTML = _.join(["hello","word"],"");
+  divBox.innerHTML = _.join(["hello01","word"],"");
   return divBox;
 }
 document.body.appendChild(component());
+
+if(module.hot){
+  module.hot.accept('./print.js', function () {
+    console.log('Accepting the updated printMe module');
+    printMe();
+  })
+}
