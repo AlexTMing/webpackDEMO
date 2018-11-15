@@ -1,12 +1,11 @@
+import _ from 'lodash';
 
-function getComponent() {
-  return import('loadsh').then(_ =>{
-    var element = document.createElement('div');
-    element.innerHTML = _.join(['Hello','word'],' ');
-    return element;
-  }).catch(error => 'An error occurred while loading the component');
+function component() {
+  var element = document.createElement('div');
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.appendChild();
+
+  return element;
 }
 
-getComponent().then(component => {
-  document.body.appendChild(component);
-})
+document.body.appendChild(component());
