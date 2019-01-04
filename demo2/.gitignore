@@ -6,11 +6,6 @@
 # production
 /dist
 
-# misc
-.DS_Store
-npm-debug.log*
-/src/configs/E.js
-
 # idea
 /.idea
 
