@@ -1,5 +1,10 @@
 import _ from 'lodash';
 import printMe from './print';
+import './styles.css';
+
+if(porcess.env.NODE_ENV !== 'production'){
+  console.log('looks like we ')
+}
 
 function component() {
   var element = document.createElement('div');
@@ -16,4 +21,19 @@ function component() {
   return element;
 }
 
-document.body.appendChild(component());
+// 修改后重新获取最新渲染
+let element = component();
+document.body.appendChild(element);
+
+
+if(module.hot){
+  module.hot.accept('./print.js',function () {
+    console.log('Accepting the updata');
+    // printMe();
+    // 页面重新渲染后 进行绑定事件更新
+    document.body.removeChild(element);
+    element = component();
+    document.body.appendChild(element);
+
+  })
+}
